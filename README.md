@@ -1,6 +1,6 @@
-# Claude-Hackathon
 
-# Civic Signal Vault
+
+# Legiscope - Claude UMD Hackathon
 
 > A Python CLI that pulls real legislative and civic signals, stores them locally, and resurfaces content based on your energy level — turning passive awareness into active civic engagement.
 
