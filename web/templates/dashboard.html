@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LegiScope</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <div id="bg-stack" class="bg-stack" aria-hidden="true">
+    <div class="bg-layer" id="bg-a"></div>
+    <div class="bg-layer" id="bg-b"></div>
+  </div>
+
+  <header class="topbar">
+    <button
+      type="button"
+      class="btn-primary"
+      id="btn-refresh"
+      title="Download the latest items from your configured feeds (RSS, Congress when API key is set) and merge them into your local vault."
+    >
+      Refresh signals
+    </button>
+    <div class="brand brand-end">
+      <span class="brand-logo" aria-hidden="true">◇</span>
+      <span class="brand-name">LegiScope</span>
+    </div>
+  </header>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="view-browse" class="view view-browse">
+    <p class="hint">
+      Use <strong>Interested</strong> / <strong>Not interested</strong> to tune what you see next.
+      Arrows slide between posts; tap the card to read more.
+    </p>
+
+    <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Civic signals">
+      <button type="button" class="nav-btn nav-prev" id="btn-prev" aria-label="Previous signal">
+        <span class="nav-icon" aria-hidden="true">‹</span>
+      </button>
+
+      <div class="card-column">
+        <div class="feedback-row">
+          <button type="button" class="btn-feedback btn-not" id="btn-not" disabled>Not interested</button>
+          <button type="button" class="btn-feedback btn-yes" id="btn-yes" disabled>Interested</button>
+        </div>
+
+        <div class="card-shell" id="card-shell">
+          <button type="button" class="study-card" id="study-card" aria-label="Open this signal">
+            <div class="study-card-media">
+              <img id="card-image" src="" alt="" width="960" height="540" decoding="async" />
+            </div>
+            <div class="study-card-text">
+              <h1 class="card-title" id="card-title"></h1>
+              <p class="card-subtitle" id="card-subtitle"></p>
+              <p class="card-meta" id="card-meta"></p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="nav-btn nav-next" id="btn-next" aria-label="Next signal">
+        <span class="nav-icon" aria-hidden="true">›</span>
+      </button>
+    </div>
+
+    <div class="progress" id="progress" aria-live="polite"></div>
+  </div>
+
+  <div id="view-detail" class="view view-detail hidden" hidden>
+    <div class="detail-toolbar">
+      <button type="button" class="btn-back" id="btn-back" aria-label="Back to cards">
+        <span aria-hidden="true">←</span> Back
+      </button>
+    </div>
+
+    <article class="detail-sheet">
+      <div class="detail-hero">
+        <img id="detail-image" src="" alt="" width="960" height="420" decoding="async" />
+      </div>
+      <div class="detail-body">
+        <p class="detail-kicker" id="detail-kicker"></p>
+        <h1 class="detail-title" id="detail-title"></h1>
+        <a class="detail-link" id="detail-url" href="#" target="_blank" rel="noopener noreferrer">Open original source ↗</a>
+
+        <section class="block">
+          <h2>Summary</h2>
+          <p id="detail-summary"></p>
+        </section>
+
+        <section class="block dual-block">
+          <h2>Two ways to read it</h2>
+          <p class="fine-print" id="detail-lens-note"></p>
+          <div class="dual-columns">
+            <div class="dual-box dual-a">
+              <h3>Supporters argue</h3>
+              <p id="detail-support"></p>
+            </div>
+            <div class="dual-box dual-b">
+              <h3>Critics argue</h3>
+              <p id="detail-critic"></p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
